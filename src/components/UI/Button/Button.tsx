@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, FC } from 'react';
 import classes from './Button.module.css'
 
 interface IButtonProps {
@@ -6,7 +6,7 @@ interface IButtonProps {
   disabled?: boolean
 }
 
-export const Button = ({children, ...props}: IButtonProps) => {
+export const Button: FC<IButtonProps> = ({children, ...props}) => {
   return (
     <button {...props} className={classes.myBtn}>
       {children}
