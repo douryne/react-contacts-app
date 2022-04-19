@@ -15,7 +15,6 @@ export const Navbar = () => {
   const logOut = (): void => {
     dispatch(toggleAuthState(false));
     localStorage.setItem('isAuth', 'false');
-    console.log(isAuth)
   }
 
   return (

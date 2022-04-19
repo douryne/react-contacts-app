@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import {Button} from '../components/UI/Button/Button';
 import {Input} from '../components/UI/Input/Input';
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { useAppDispatch } from '../hooks/redux';
 import { useBtnWithFilledForm } from '../hooks/useBtnWithFilledForm';
 import {authReducer} from '../store/reducers/authReducer';
 interface IForm {
@@ -9,21 +9,13 @@ interface IForm {
   password: string
 }
 
-export const Login: React.FC = () => {
-  const {isAuth} = useAppSelector(state => state.authReducer);
+const Login: React.FC = () => {
   const {toggleAuthState} = authReducer.actions;
   const dispatch = useAppDispatch();
 
   const [form, setForm] = useState<IForm>({username: '', password: ''});
 
   const isFormFilled = useBtnWithFilledForm(form);
-
-  useEffect(() => {
-    const authState = localStorage.getItem('isAuth');
-    if (!authState) return;
-    dispatch(toggleAuthState(Boolean(authState)))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const login = (event: React.FormEvent): void => {
     event.preventDefault();
@@ -49,8 +41,6 @@ export const Login: React.FC = () => {
         />
         <Button disabled={!isFormFilled}>Login</Button>
       </form>
-
-      <h2>isAuth: {String(isAuth)}</h2>
     </div>
   );
 };

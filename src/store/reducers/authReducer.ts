@@ -14,7 +14,6 @@ export const authReducer = createSlice({
   initialState,
   reducers: {
     toggleAuthState(state, action: PayloadAction<boolean>) {
-      console.log(action.payload)
       state.isAuth = action.payload;
     }
   }
