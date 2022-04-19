@@ -24,6 +24,9 @@ export const contactsReducer = createSlice({
   reducers: {
     removeContact(state, action: PayloadAction<number>) {
       state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
+    },
+    addContact(state, action: PayloadAction<IContact>) {
+      state.contacts.push(action.payload);
     }
   }
 })

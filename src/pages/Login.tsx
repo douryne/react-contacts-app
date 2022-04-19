@@ -17,7 +17,7 @@ const Login: React.FC = () => {
 
   const isFormFilled = useBtnWithFilledForm(form);
 
-  const login = (event: React.FormEvent): void => {
+  const login = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     dispatch(toggleAuthState(true));
     localStorage.setItem('isAuth', 'true');

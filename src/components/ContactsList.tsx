@@ -10,8 +10,8 @@ export const ContactsList: React.FC = () => {
   return (
     <div>
         {
-        contacts.map(contact => (
-          <ContactItem key={contact.id} {...contact} />
+        contacts.map((contact, index) => (
+          <ContactItem key={contact.id} index={index+1} {...contact} />
         ))
       }
     </div>
