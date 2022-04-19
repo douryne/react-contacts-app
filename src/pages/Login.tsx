@@ -22,12 +22,13 @@ export const Login: React.FC = () => {
     const authState = localStorage.getItem('isAuth');
     if (!authState) return;
     dispatch(toggleAuthState(Boolean(authState)))
-  })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  const login = (event: React.FormEvent) => {
+  const login = (event: React.FormEvent): void => {
     event.preventDefault();
     dispatch(toggleAuthState(true));
-    localStorage.setItem('isAuth', 'isAuth');
+    localStorage.setItem('isAuth', 'true');
   }
 
   return (

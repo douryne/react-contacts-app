@@ -3,7 +3,8 @@ import classes from './Button.module.css'
 
 interface IButtonProps {
   children: ReactNode,
-  disabled?: boolean
+  disabled?: boolean,
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const Button: FC<IButtonProps> = ({children, ...props}) => {
