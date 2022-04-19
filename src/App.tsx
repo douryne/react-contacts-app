@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import './styles/App.css';
-import { Navbar } from './components';
+import { Navbar, AppRouter } from './components';
 import {BrowserRouter} from 'react-router-dom';
 import { useAppDispatch } from './hooks/redux';
-import AppRouter from './components/AppRouter';
 import {authReducer} from './store/reducers/authReducer';
 
 function App() {

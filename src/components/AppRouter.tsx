@@ -4,7 +4,7 @@ import { useAppSelector } from '../hooks/redux';
 import { publicRoutes, privateRoutes } from '../router/index';
 
 
-const AppRouter = () => {
+export const AppRouter = () => {
   const {isAuth} = useAppSelector(state => state.authReducer);
   return (
     <Routes>
@@ -30,5 +30,3 @@ const AppRouter = () => {
     </Routes>
   );
 };
-
-export default AppRouter;
