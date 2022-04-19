@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import {Button} from '../components/UI/Button/Button';
 import {Input} from '../components/UI/Input/Input';
+import { useBtnWithFilledForm } from '../hooks/useBtnWithFilledForm';
 
 interface IForm {
-  username: string,
+  [username: string]: string,
   password: string
 }
 
 export const Login: React.FC = () => {
   const [form, setForm] = useState<IForm>({username: '', password: ''});
+
+  const isFormFilled = useBtnWithFilledForm(form);
 
   const login = (event: React.FormEvent) => {
     event.preventDefault();
@@ -31,7 +34,7 @@ export const Login: React.FC = () => {
           type='password' 
           placeholder='Password'
         />
-        <Button>Login</Button>
+        <Button disabled={!isFormFilled}>Login</Button>
       </form>
     </div>
   );
