@@ -1,8 +1,9 @@
 import React from 'react';
 import { useAppSelector } from '../hooks/redux';
+import { ContactItem } from './';
 
 
-export const ContactsList = () => {
+export const ContactsList: React.FC = () => {
   const {contacts} = useAppSelector(state => state.contactsReducer);
 
 
@@ -10,10 +11,7 @@ export const ContactsList = () => {
     <div>
         {
         contacts.map(contact => (
-          <div key={contact.id}>
-            <h2>{contact.name}</h2>
-            <h3>{contact.telNumber}</h3>
-          </div>
+          <ContactItem {...contact} />
         ))
       }
     </div>

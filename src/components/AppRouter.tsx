@@ -4,7 +4,7 @@ import { useAppSelector } from '../hooks/redux';
 import { publicRoutes, privateRoutes } from '../router/index';
 
 
-export const AppRouter = () => {
+export const AppRouter: React.FC = () => {
   const {isAuth} = useAppSelector(state => state.authReducer);
   return (
     <Routes>

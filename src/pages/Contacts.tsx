@@ -1,8 +1,7 @@
 import React from 'react';
 import { ContactsList } from '../components';
 
-const Contacts = () => {
-
+const Contacts: React.FC = () => {
   return (
     <div>
       <h1>Contacts</h1>
