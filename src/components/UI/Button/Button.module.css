@@ -1,0 +1,27 @@
+.myBtn {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  background-color: whitesmoke;
+  transition: opacity 0.2s linear;
+}
+
+.myBtn:hover {
+  opacity: 0.8;
+}
+
+.myBtn:focus-visible {
+  border: 2px solid black;
+}
+
+.myBtn:focus:not(:focus-visible) {
+  border: none;
+}
+
+.myBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
