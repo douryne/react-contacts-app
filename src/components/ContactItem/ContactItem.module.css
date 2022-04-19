@@ -5,3 +5,8 @@
   color: #282c34;
   margin: 10px 0;
 }
+
+.item button {
+  background-color: #282c34;
+  color: white;
+}

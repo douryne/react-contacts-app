@@ -11,7 +11,7 @@ export const ContactsList: React.FC = () => {
     <div>
         {
         contacts.map(contact => (
-          <ContactItem {...contact} />
+          <ContactItem key={contact.id} {...contact} />
         ))
       }
     </div>

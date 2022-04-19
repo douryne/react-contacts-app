@@ -1,4 +1,4 @@
-import {createSlice} from  '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from  '@reduxjs/toolkit';
 
 interface IContact {
   id: number,
@@ -21,7 +21,11 @@ const initialState: IContactsState = {
 export const contactsReducer = createSlice({
   name: 'contactsReducer',
   initialState,
-  reducers: {}
+  reducers: {
+    removeContact(state, action: PayloadAction<number>) {
+      state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
+    }
+  }
 })
 
 export default contactsReducer.reducer;
