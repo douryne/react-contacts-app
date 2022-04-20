@@ -1,17 +1,36 @@
 import React, {  useState } from 'react';
-import {Button} from '../components/UI/Button/Button';
-import {Input} from '../components/UI/Input/Input';
-import { useAppDispatch } from '../hooks/redux';
+import { Button, Input } from '../components';
 import { useBtnWithFilledForm } from '../hooks/useBtnWithFilledForm';
+import AuthServer from '../API/AuthServer';
+import { useAppDispatch } from '../hooks/redux';
 import {authReducer} from '../store/reducers/authReducer';
+import {useFetching} from '../hooks/useFetching';
+
 interface IForm {
-  [username: string]: string,
+  [some: string]: string,
+  username: string,
   password: string
 }
 
 const Login: React.FC = () => {
   const {toggleAuthState} = authReducer.actions;
   const dispatch = useAppDispatch();
+  const fetching = useFetching(async () => {
+    const users = await AuthServer.getUser(form);
+
+    if (!users.length) {
+      alert('wrong username');
+      return;
+    }
+    const user = users[0];
+    if (user.password !== form.password) {
+      alert('wrong password');
+      return;
+    }
+
+    dispatch(toggleAuthState(true));
+    localStorage.setItem('isAuth', 'true');
+  });
 
   const [form, setForm] = useState<IForm>({username: '', password: ''});
 
@@ -19,8 +38,7 @@ const Login: React.FC = () => {
 
   const login = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    dispatch(toggleAuthState(true));
-    localStorage.setItem('isAuth', 'true');
+    fetching(form);
   }
 
   return (
