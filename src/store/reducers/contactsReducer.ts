@@ -27,6 +27,10 @@ export const contactsReducer = createSlice({
     },
     addContact(state, action: PayloadAction<IContact>) {
       state.contacts.push(action.payload);
+    },
+    editContact(state, action: PayloadAction<IContact>) {
+      const editedContactIdx = state.contacts.findIndex(contact => contact.id === action.payload.id);
+      state.contacts[editedContactIdx] = action.payload;
     }
   }
 })

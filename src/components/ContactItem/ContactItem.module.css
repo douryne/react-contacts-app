@@ -4,9 +4,27 @@
   padding: 10px 20px;
   color: #282c34;
   margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item .text {
+  display: flex;
+  flex-direction: column;
+}
+
+.item .btns {
+  display: flex;
+  flex-direction: column;
 }
 
 .item button {
   background-color: #282c34;
   color: white;
+  margin: 5px 0;
+}
+
+.item input {
+  border: 1px solid #282c34; 
 }
