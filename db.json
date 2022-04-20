@@ -1,7 +1,31 @@
 {
   "users": [
-    {"username": "vova", "password": "1234"},
-    {"username": "vanya", "password": "1234"},
-    {"username": "gleb", "password": "1234"}
+    {
+      "username": "vova",
+      "password": "1234",
+      "contacts": [
+        {"id": 1, "name": "Василий", "telNumber": "1111111"},
+        {"id": 2, "name": "Андрей", "telNumber": "2222222"},
+        {"id": 3, "name": "Глеб", "telNumber": "33333333"}
+      ]
+    },
+    {
+      "username": "vanya",
+      "password": "1234",
+      "contacts": [
+        {"id": 1, "name": "Дмитрий", "telNumber": "1111111"},
+        {"id": 2, "name": "Эдуард", "telNumber": "2222222"},
+        {"id": 3, "name": "Антон", "telNumber": "33333333"}
+      ]
+    },
+    {
+      "username": "vanya",
+      "password": "1234",
+      "contacts": [
+        {"id": 1, "name": "Владимир", "telNumber": "1111111"},
+        {"id": 2, "name": "Константин", "telNumber": "2222222"},
+        {"id": 3, "name": "Евгений", "telNumber": "33333333"}
+      ]
+    }
   ]
 }

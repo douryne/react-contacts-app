@@ -13,7 +13,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   const logOut = (): void => {
-    authReducer.toggleAuthState(false);
+    authReducer.toggleAuthState({isAuth: false, username: ''});
     localStorage.setItem('isAuth', 'false');
   }
 

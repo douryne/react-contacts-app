@@ -2,7 +2,7 @@ import axios from "axios";
 
 interface IGetUserProps {
   username: string,
-  password: string
+  password?: string
 }
 
 export default class AuthServer {

@@ -2,17 +2,16 @@ import React, {useEffect} from 'react';
 import './styles/App.css';
 import { Navbar, AppRouter } from './components';
 import {BrowserRouter} from 'react-router-dom';
-import { useAppDispatch } from './hooks/redux';
-import {authReducer} from './store/reducers/authReducer';
+import { useAction } from './hooks/redux';
 
 function App() {
-  const {toggleAuthState} = authReducer.actions;
-  const dispatch = useAppDispatch();
+  const {authReducer} = useAction();
 
   useEffect(() => {
     const authState = localStorage.getItem('isAuth');
-    if (!authState) return;
-    dispatch(toggleAuthState(JSON.parse(authState)))
+    const username = localStorage.getItem('username');
+    if (!authState && !username) return;
+    authReducer.toggleAuthState({isAuth: JSON.parse(String(authState)), username: String(username)})
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

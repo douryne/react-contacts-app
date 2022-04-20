@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ContactForm, ContactsList } from '../components';
-import { useAppDispatch } from './../hooks/redux';
-import {contactsReducer} from './../store/reducers/contactsReducer';
+import { useAction, useAppDispatch, useAppSelector } from './../hooks/redux';
+import {fetchContactsByUser} from '../store/reducers/contactsReducer';
 
 interface IAddContactProps {
   name: string,
@@ -9,11 +9,19 @@ interface IAddContactProps {
 }
 
 const Contacts: React.FC = () => {
-  const { addContact } = contactsReducer.actions;
-  const dispatch = useAppDispatch();
+  const { contactsReducer } = useAction();
+  const {username} = useAppSelector(state => state.authReducer);
   const addNewContact = (form: IAddContactProps) => {
-    dispatch(addContact({id: Date.now(), ...form}));
+    contactsReducer.addContact({id: Date.now(), ...form});
   }
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContactsByUser({username}));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <div>
       <h1>Contacts</h1>

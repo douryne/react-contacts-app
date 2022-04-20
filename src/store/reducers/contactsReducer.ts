@@ -1,4 +1,5 @@
-import {createSlice, PayloadAction} from  '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice, PayloadAction} from  '@reduxjs/toolkit';
+import AuthServer from '../../API/AuthServer';
 
 interface IContact {
   id: number,
@@ -11,12 +12,20 @@ interface IContactsState {
 }
 
 const initialState: IContactsState = {
-  contacts: [
-    {id: 1, name: 'Василий', telNumber: '1111111'},
-    {id: 2, name: 'Андрей', telNumber: '1111111'},
-    {id: 3, name: 'Глеб', telNumber: '1111111'}
-  ]
+  contacts: []
 }
+
+interface fetchProps {
+  username: string
+}
+
+export const fetchContactsByUser = createAsyncThunk(
+  'contacts/fetchContactsByUser',
+  async ({username}: fetchProps) => {
+    const response = await AuthServer.getUser({username});
+    return await response;
+  }
+)
 
 export const contactsReducer = createSlice({
   name: 'contactsReducer',
@@ -32,7 +41,20 @@ export const contactsReducer = createSlice({
       const editedContactIdx = state.contacts.findIndex(contact => contact.id === action.payload.id);
       state.contacts[editedContactIdx] = action.payload;
     }
-  }
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchContactsByUser.pending, (state, {payload} ) => {
+      console.log('pending');
+    })
+    builder.addCase(fetchContactsByUser.fulfilled, (state, {payload} ) => {
+      console.log('fulfilled');
+      state.contacts = payload[0].contacts;
+    })
+    builder.addCase(fetchContactsByUser.rejected, (state, {payload, error} ) => {
+      console.log('rejected');
+      console.log(error.message);
+    })
+  },
 })
 
 export default contactsReducer.reducer;
