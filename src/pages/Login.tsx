@@ -2,9 +2,8 @@ import React, {  useState } from 'react';
 import { Button, Input } from '../components';
 import { useBtnWithFilledForm } from '../hooks/useBtnWithFilledForm';
 import AuthServer from '../API/AuthServer';
-import { useAppDispatch } from '../hooks/redux';
-import {authReducer} from '../store/reducers/authReducer';
 import {useFetching} from '../hooks/useFetching';
+import { useAction } from '../hooks/redux';
 
 interface IForm {
   [some: string]: string,
@@ -13,11 +12,9 @@ interface IForm {
 }
 
 const Login: React.FC = () => {
-  const {toggleAuthState} = authReducer.actions;
-  const dispatch = useAppDispatch();
+  const {authReducer} = useAction();
   const fetching = useFetching(async () => {
     const users = await AuthServer.getUser(form);
-
     if (!users.length) {
       alert('wrong username');
       return;
@@ -28,7 +25,7 @@ const Login: React.FC = () => {
       return;
     }
 
-    dispatch(toggleAuthState(true));
+    authReducer.toggleAuthState(true);
     localStorage.setItem('isAuth', 'true');
   });
 
