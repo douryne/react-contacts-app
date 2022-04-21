@@ -49,13 +49,13 @@ const Login: React.FC = () => {
           value={form.username}
           onChange={event => setForm({...form, username: event.target.value})}
           type='text'
-          placeholder='Username'
+          placeholder='Username: vova | gleb | vanya'
         />
         <Input
           value={form.password}
           onChange={event => setForm({...form, password: event.target.value})}
           type='password' 
-          placeholder='Password'
+          placeholder='Password: 1234'
         />
         <Button disabled={!isFormFilled}>Login</Button>
       </form>
