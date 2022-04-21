@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { Button, ContactForm } from '../';
-import { useAppDispatch } from '../../hooks/redux';
-import {contactsReducer} from '../../store/reducers/contactsReducer';
+import { useAction } from '../../hooks/redux';
+import { useChangeContacts } from '../../hooks/useChangeContacts';
+
 import classes from './ContactItem.module.css';
 
 interface IContactItemProps {
@@ -18,13 +19,14 @@ interface IEditContactProps {
 
 export const ContactItem: React.FC<IContactItemProps> = ({id, index, name, telNumber}) => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
-  const { removeContact, editContact } = contactsReducer.actions;
-  const dispatch = useAppDispatch();
+  const {contactsReducer} = useAction();
 
   const editForm = (form: IEditContactProps) => {
-    dispatch(editContact({id: id, ...form}));
+    contactsReducer.editContact({id: id, ...form});
     setIsEditing(false);
   }
+
+  useChangeContacts();
 
   return (
     <div className={classes.item}>
@@ -45,7 +47,7 @@ export const ContactItem: React.FC<IContactItemProps> = ({id, index, name, telNu
             <h4>phone number: {telNumber}</h4>
           </div>
           <div className={classes.btns}>
-            <Button onClick={() => dispatch(removeContact(id))}>Remove Item</Button>
+            <Button onClick={() => contactsReducer.removeContact(id)}>Remove Item</Button>
             <Button onClick={() => setIsEditing(true)}>Edit Item</Button>
           </div>
         </>

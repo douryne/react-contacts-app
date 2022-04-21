@@ -16,13 +16,23 @@ const initialState: IContactsState = {
 }
 
 interface fetchProps {
-  username: string
+  username: string,
+  password?: string,
+  contacts?: IContact[]
 }
 
 export const fetchContactsByUser = createAsyncThunk(
   'contacts/fetchContactsByUser',
   async ({username}: fetchProps) => {
     const response = await AuthServer.getUser({username});
+    return await response;
+  }
+)
+
+export const postContactsToServer = createAsyncThunk(
+  'contacts/postContactsToServer',
+  async ({username, contacts}: fetchProps) => {
+    const response = await AuthServer.postContacts({username, contacts});
     return await response;
   }
 )
@@ -53,6 +63,9 @@ export const contactsReducer = createSlice({
     builder.addCase(fetchContactsByUser.rejected, (state, {payload, error} ) => {
       console.log('rejected');
       console.log(error.message);
+    })
+    builder.addCase(postContactsToServer.fulfilled, (state, {payload} ) => {
+      console.log('fulfilled');
     })
   },
 })

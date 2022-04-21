@@ -4,28 +4,77 @@
       "username": "vova",
       "password": "1234",
       "contacts": [
-        {"id": 1, "name": "Василий", "telNumber": "1111111"},
-        {"id": 2, "name": "Андрей", "telNumber": "2222222"},
-        {"id": 3, "name": "Глеб", "telNumber": "33333333"}
-      ]
+        {
+          "id": 1,
+          "name": "10923801",
+          "telNumber": "0912310"
+        },
+        {
+          "id": 2,
+          "name": "Андрей",
+          "telNumber": "2222222"
+        },
+        {
+          "id": 3,
+          "name": "90238452",
+          "telNumber": "098"
+        },
+        {
+          "id": 1650482484075,
+          "name": "atoheu",
+          "telNumber": "123"
+        },
+        {
+          "id": 1650483339625,
+          "name": "123123",
+          "telNumber": "123123"
+        }
+      ],
+      "id": 1
     },
     {
+      "id": 2,
       "username": "vanya",
       "password": "1234",
       "contacts": [
-        {"id": 1, "name": "Дмитрий", "telNumber": "1111111"},
-        {"id": 2, "name": "Эдуард", "telNumber": "2222222"},
-        {"id": 3, "name": "Антон", "telNumber": "33333333"}
+        {
+          "id": 1,
+          "name": "Дмитрий",
+          "telNumber": "1111111"
+        },
+        {
+          "id": 2,
+          "name": "Эдуард",
+          "telNumber": "2222222"
+        },
+        {
+          "id": 3,
+          "name": "Антон",
+          "telNumber": "33333333"
+        }
       ]
     },
     {
-      "username": "vanya",
+      "username": "gleb",
       "password": "1234",
       "contacts": [
-        {"id": 1, "name": "Владимир", "telNumber": "1111111"},
-        {"id": 2, "name": "Константин", "telNumber": "2222222"},
-        {"id": 3, "name": "Евгений", "telNumber": "33333333"}
-      ]
+        {
+          "id": 1,
+          "name": "Владимир",
+          "telNumber": "1111111"
+        },
+        {
+          "id": 2,
+          "name": "Константин",
+          "telNumber": "2222222"
+        },
+        {
+          "id": 3,
+          "name": "Евгений",
+          "telNumber": "33333333"
+        }
+      ],
+      "id": 3
     }
   ]
 }

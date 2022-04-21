@@ -26,8 +26,10 @@ const Login: React.FC = () => {
     }
 
     authReducer.toggleAuthState({isAuth: true, username: form.username});
-    localStorage.setItem('isAuth', 'true');
-    localStorage.setItem('username', form.username);
+    localStorage.setItem('authState', JSON.stringify({
+      isAuth: true,
+      username: form.username
+    }));
   });
 
   const [form, setForm] = useState<IForm>({username: '', password: ''});

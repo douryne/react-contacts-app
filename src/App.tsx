@@ -8,10 +8,14 @@ function App() {
   const {authReducer} = useAction();
 
   useEffect(() => {
-    const authState = localStorage.getItem('isAuth');
-    const username = localStorage.getItem('username');
-    if (!authState && !username) return;
-    authReducer.toggleAuthState({isAuth: JSON.parse(String(authState)), username: String(username)})
+    const authState = localStorage.getItem('authState');
+    if (!authState) return;
+    const {isAuth, username} = JSON.parse(String(authState));
+    authReducer.toggleAuthState(
+      {
+        isAuth: isAuth,
+        username: username
+      })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

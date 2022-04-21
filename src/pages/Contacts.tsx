@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ContactForm, ContactsList } from '../components';
 import { useAction, useAppDispatch, useAppSelector } from './../hooks/redux';
 import {fetchContactsByUser} from '../store/reducers/contactsReducer';
+import { useChangeContacts } from '../hooks/useChangeContacts';
 
 interface IAddContactProps {
   name: string,
@@ -14,6 +15,8 @@ const Contacts: React.FC = () => {
   const addNewContact = (form: IAddContactProps) => {
     contactsReducer.addContact({id: Date.now(), ...form});
   }
+
+  useChangeContacts();
 
   const dispatch = useAppDispatch();
 
